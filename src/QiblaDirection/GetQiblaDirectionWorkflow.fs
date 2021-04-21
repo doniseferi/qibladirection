@@ -4,21 +4,19 @@ open DomainApi
 open System
 open GeoCoordinatesService
 
-//let handle geoCoordinatesService unvalidatedGeoCoordinates =
-//    match geoCoordinatesService unvalidatedGeoCoordinates with
-//    | Error e -> QiblaError { invalidField = e.invalidField; message = e.message }
-//    | Result geoCoordinates ->
+//atan2 
+// top (sin (Qibla Longitude -  Longitude), 
+// bottom = cos Latitude * tan Meccaa Latitude - Sin latitude * cos (Qibla longitude - longitude)
 
 let qiblaDirection geoCoordinates =
-    let l = Longitude.value Mecca.Kaaba.longitude - Longitude.value geoCoordinates.longitude
-    let rad: float = float l
-    let n = sin rad
-    let b = cos (Latitude.value geoCoordinates.latitude) tan Mecca.Kaaba.latitude sin cos Latitude.value Mecca.Kaaba.longitude - geoCoordinates.longitude
-    let r = a / b
-    let q = atan r
-    let res = Degrees.create q
-    match res with
-    | Some s -> {trueNorth = s; magneticNorth = s}
-    | None -> failwith "Err Err Err"
+    let top = Longitude.subtract Mecca.Kaaba.longitude geoCoordinates.longitude |> Radians.value |> sin
+    let cosineOfLat = Latitude.value geoCoordinates.latitude |> Radians.convert |> Radians.value |> cos
+    let tangentOfLat = Latitude.value Mecca.Kaaba.latitude |> Radians.convert |> Radians.value |> tan
+    let sineofLat = Latitude.value geoCoordinates.latitude |> Radians.convert |> Radians.value |> sin
+    let cosineOfLon = Longitude.subtract Mecca.Kaaba.longitude geoCoordinates.longitude |> Radians.value |> cos
+    let bottom = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
+    let qibla = atan2 top bottom
+    let degrees = qibla |> Degrees.convert
+    { trueNorth = degrees; magneticNorth = degrees }
 
 

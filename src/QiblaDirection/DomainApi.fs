@@ -2,8 +2,8 @@
 open CommonTypes
 
 type UnvalidatedGeoCoordinates = {
-    lat: decimal
-    lon: decimal
+    lat: float
+    lon: float
 }
 
 type Error = {
