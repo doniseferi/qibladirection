@@ -7,9 +7,9 @@
 
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />
-    <Compile Include="DomainApi.fs" />
+    <Compile Include="QiblaDirection.fs" />
     <Compile Include="GeoCoordinatesService.fs" />
-    <Compile Include="GetQiblaDirectionWorkflow.fs" />
+    <Compile Include="DomainApi.fs" />
   </ItemGroup>
 
 </Project>

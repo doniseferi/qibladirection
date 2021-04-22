@@ -45,7 +45,6 @@ module Degrees =
         | LessThan 0f -> None
         | _ -> Some (Degrees (float degrees))
 
-
 module Radians =
     open System
     let value (Radians rad) = rad
@@ -64,9 +63,9 @@ module Latitude =
 
     let create latitude =
         match latitude with
-        | GreaterThan 90f -> None
-        | LessThan -90f -> None
-        | _ -> Some (Latitude (float latitude))
+        | GreaterThan (float 90) -> None
+        | LessThan (float -90) -> None
+        | _ -> Some (Latitude latitude)
 
 module Longitude =
     open ConstainedTypes
