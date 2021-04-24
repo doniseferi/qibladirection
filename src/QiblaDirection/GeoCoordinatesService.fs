@@ -1,6 +1,5 @@
 ﻿module GeoCoordinatesService
 open CommonTypes
-open DomainApi
 
 let createGeoCoordinates unvalidatedGeoCoordinates =
     match Latitude.create (float unvalidatedGeoCoordinates.lat) with

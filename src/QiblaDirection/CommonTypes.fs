@@ -7,7 +7,10 @@ type Latitude = private Latitude of  float
 type Longitude = private Longitude of float
 
 [<Struct>]
-type GeoCoordinates = { latitude: Latitude; longitude: Longitude }
+type GeoCoordinates = public {
+    latitude: Latitude; 
+    longitude: Longitude
+}
 
 [<Struct>]
 type Degrees = private Degrees of float
@@ -19,6 +22,18 @@ type Radians = private Radians of float
 type QiblaDirection = public {
     trueNorth: Degrees
     magneticNorth: Degrees
+}
+
+[<Struct>]
+type ErrorInformation = public {
+    message: string
+    invalidField: string
+}
+
+[<Struct>]
+type UnvalidatedGeoCoordinates = public {
+    lat: float
+    lon: float
 }
 
 type QiblaDirectionQueryHandler = GeoCoordinates -> QiblaDirection

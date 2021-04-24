@@ -1,26 +1,15 @@
 ﻿namespace DomainApi
 open CommonTypes
-open QiblaDirection
+open QiblaDirectionService
 
-type UnvalidatedGeoCoordinates = {
-    lat: float
-    lon: float
-}
+type QiblaError = QiblaError of ErrorInformation
 
-type Error = {
-    invalidField: string
-    message: string
-}
+type GeoCoordinatesService = UnvalidatedGeoCoordinates -> Result<GeoCoordinates, ErrorInformation>
 
-type QiblaError = QiblaError of Error
-
-type GeoCoordinatesService = UnvalidatedGeoCoordinates -> Result<GeoCoordinates, Error>
-
-type GetQiblaDirectionQueryHandler = UnvalidatedGeoCoordinates -> GeoCoordinatesService -> Result<QiblaDirection, QiblaError>
+type GetQiblaDirectionQueryHandler = QiblaDirectionService -> GeoCoordinatesService -> UnvalidatedGeoCoordinates -> Result<QiblaDirection, QiblaError>
 
 module GetQiblaDirectionQueryHandler
-    let handle qiblaDirection createGeoCoordinates unvalidateGeoCoordinates =
-        let geoCoordinates = createGeoCoordinates unvalidateGeoCoordinates
-            match geoCoordinates with
-            | Error -> QiblaError { invalidField = "a"; message = "abc" }
-            | GeoCoordinates value -> qiblaDirection value
+    let handle getQiblaDirectionQueryHandler createGeoCoordinates unvalidatedGeoCoordinates =
+        match geoCoordinatesService unvalidatedGeoCoordinates with
+        | Error err -> QiblaError { invalidField = err.invalidField; message = err.message}
+        |  Ok geoCoordinates -> qiblaDirection geoCoordinates
