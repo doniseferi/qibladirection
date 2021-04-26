@@ -25,7 +25,7 @@ type QiblaDirection = public {
 }
 
 [<Struct>]
-type ErrorInformation = public {
+type ErrorInformation = {
     message: string
     invalidField: string
 }

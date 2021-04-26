@@ -1,8 +1,6 @@
 ﻿namespace QiblaDirectionService
 open CommonTypes
 
-type QiblaDirectionService = GeoCoordinates -> QiblaDirection
-
 module QiblaDirectionService =
     let getQiblaDirection geoCoordinates =
         let cosineOfLat = Latitude.value geoCoordinates.latitude |> Radians.convert |> Radians.value |> cos
