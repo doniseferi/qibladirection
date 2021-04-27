@@ -1,13 +1,17 @@
-﻿module GetQiblaDirectionQueryHandler
+﻿namespace DomainApi
 open CommonTypes
 
+[<Struct>]
 type QiblaError = QiblaError of ErrorInformation
 
-type QiblaDirectionService = GeoCoordinates -> QiblaDirection
+[<Struct>]
+type UnvalidatedGeoCoordinates = public {
+    lat: float
+    lon: float
+}
 
-type GeoCoordinatesService = UnvalidatedGeoCoordinates -> Result<GeoCoordinates, ErrorInformation>
+type GeoCoordinatesValidator = UnvalidatedGeoCoordinates -> Result<GeoCoordinates, ErrorInformation>
 
-let handle (qiblaDirectionService: QiblaDirectionService) (createGeoCoordinates:GeoCoordinatesService) (unvalidatedGeoCoordinates:UnvalidatedGeoCoordinates) =
-    match createGeoCoordinates unvalidatedGeoCoordinates with
-    | Ok geo -> Ok (qiblaDirectionService geo)
-    | Error e -> Error (QiblaError { invalidField = e.invalidField; message = e.message })
+type GetQiblaDirection = GeoCoordinates -> QiblaDirection 
+
+type QiblaDirectionQueryHandler = GeoCoordinatesValidator -> GetQiblaDirection -> UnvalidatedGeoCoordinates -> Result<QiblaDirection, QiblaError>

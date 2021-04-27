@@ -1,7 +1,9 @@
-﻿module GeoCoordinatesService
+﻿module GeoCoordinatesValidator
 open CommonTypes
+open DomainApi
 
-let createGeoCoordinates unvalidatedGeoCoordinates =
+let geoCoordinatesValidator: GeoCoordinatesValidator =
+ fun unvalidatedGeoCoordinates ->
     match Latitude.create (float unvalidatedGeoCoordinates.lat) with
     | None -> Error { invalidField = "latitude"; message = "l" }
     | Some latitude ->

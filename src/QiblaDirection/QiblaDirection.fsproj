@@ -1,15 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />
-    <Compile Include="QiblaDirectionService.fs" />
-    <Compile Include="GeoCoordinatesService.fs" />
     <Compile Include="DomainApi.fs" />
+    <Compile Include="GetQiblaDirection.fs" />
+    <Compile Include="GeoCoordinatesValidator.fs" />
   </ItemGroup>
-
 </Project>

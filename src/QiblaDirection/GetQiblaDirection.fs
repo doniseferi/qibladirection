@@ -1,8 +1,9 @@
-﻿namespace QiblaDirectionService
+﻿module GetQiblaDirection
 open CommonTypes
+open DomainApi
 
-module QiblaDirectionService =
-    let getQiblaDirection geoCoordinates =
+let getQiblaDirection: GetQiblaDirection =
+    fun geoCoordinates ->
         let cosineOfLat = Latitude.value geoCoordinates.latitude |> Radians.convert |> Radians.value |> cos
         let tangentOfLat = Latitude.value Mecca.Kaaba.latitude |> Radians.convert |> Radians.value |> tan
         let sineofLat = Latitude.value geoCoordinates.latitude |> Radians.convert |> Radians.value |> sin

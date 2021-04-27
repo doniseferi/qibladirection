@@ -30,20 +30,12 @@ type ErrorInformation = {
     invalidField: string
 }
 
-[<Struct>]
-type UnvalidatedGeoCoordinates = public {
-    lat: float
-    lon: float
-}
-
-type QiblaDirectionQueryHandler = GeoCoordinates -> QiblaDirection
-
-module QiblaDirection =
-    let create trueNorth magneticNorth = { trueNorth = trueNorth; magneticNorth = magneticNorth }
-
 module ConstainedTypes =
     let (|LessThan|_|) k value = if value < k then Some() else None
     let (|GreaterThan|_|) k value = if value > k then Some() else None
+
+module QiblaDirection =
+    let create trueNorth magneticNorth = { trueNorth = trueNorth; magneticNorth = magneticNorth }
 
 module Degrees = 
     open ConstainedTypes
