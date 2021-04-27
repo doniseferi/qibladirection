@@ -8,5 +8,6 @@
     <Compile Include="DomainApi.fs" />
     <Compile Include="GetQiblaDirection.fs" />
     <Compile Include="GeoCoordinatesValidator.fs" />
+    <Compile Include="QiblaDirectionQueryHandler.fs" />
   </ItemGroup>
 </Project>

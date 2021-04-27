@@ -14,4 +14,4 @@ type GeoCoordinatesValidator = UnvalidatedGeoCoordinates -> Result<GeoCoordinate
 
 type GetQiblaDirection = GeoCoordinates -> QiblaDirection 
 
-type QiblaDirectionQueryHandler = GeoCoordinatesValidator -> GetQiblaDirection -> UnvalidatedGeoCoordinates -> Result<QiblaDirection, QiblaError>
+type QiblaDirectionQueryHandler = GetQiblaDirection -> GeoCoordinatesValidator -> UnvalidatedGeoCoordinates -> Result<QiblaDirection, QiblaError>
