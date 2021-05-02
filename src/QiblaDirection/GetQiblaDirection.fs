@@ -38,4 +38,4 @@ let getQiblaDirection: GetQiblaDirection =
         
         let degrees = qibla |> Degrees.convert
         
-        { trueNorth = degrees; magneticNorth = degrees }
+        { trueNorth = degrees }

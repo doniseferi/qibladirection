@@ -21,7 +21,6 @@ type Radians = private Radians of float
 [<Struct>]
 type QiblaDirection = public {
     trueNorth: Degrees
-    magneticNorth: Degrees
 }
 
 [<Struct>]
@@ -30,12 +29,21 @@ type ErrorInformation = {
     invalidField: string
 }
 
+[<Struct>]
+type QiblaError = QiblaError of ErrorInformation
+
+[<Struct>]
+type UnvalidatedGeoCoordinates = public {
+    lat: float
+    lon: float
+}
+
 module ConstainedTypes =
     let (|LessThan|_|) k value = if value < k then Some() else None
     let (|GreaterThan|_|) k value = if value > k then Some() else None
 
 module QiblaDirection =
-    let create trueNorth magneticNorth = { trueNorth = trueNorth; magneticNorth = magneticNorth }
+    let create trueNorth = { trueNorth = trueNorth }
 
 module Degrees = 
     open ConstainedTypes
