@@ -30,12 +30,15 @@ let getQiblaDirection: GetQiblaDirection =
         
         let top = 
             Longitude.subtract Mecca.Kaaba.longitude geoCoordinates.longitude 
-            |> Radians.value |> sin
+            |> Radians.value 
+            |> sin
 
         let bottom = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
     
         let qibla = atan2 top bottom
         
-        let degrees = qibla |> Degrees.convert
+        let degrees = 
+            qibla 
+            |> Degrees.convert
         
         { trueNorth = degrees }

@@ -12,12 +12,17 @@ type QiblaDirectionTests () =
             | Ok s -> s
             | Error _ -> failwith ""
 
-    let systemUnderTest = GetQiblaDirectionHandler.qiblaDirectionQueryHandler' |> resultPassthroughAdapter
+    let systemUnderTest = 
+        GetQiblaDirectionHandler.qiblaDirectionQueryHandler' 
+        |> resultPassthroughAdapter
     
     [<Test>]
     member this.``Returns the true north value for Qibla when given geocoordinates`` () =
-          testData |> Seq.iter (fun x -> 
+          testData 
+          |> Seq.iter (fun x -> 
             Assert.That(
                 x.expected, 
-                Is.EqualTo((systemUnderTest x.input).trueNorth |> Degrees.value)
+                Is.EqualTo(
+                    (systemUnderTest x.input).trueNorth 
+                    |> Degrees.value)
                     .Within(0.00005f)))
