@@ -1,4 +1,4 @@
-﻿module CommonTypes
+﻿namespace CommonTypes
 
 [<Struct>]
 type Latitude = private Latitude of  float
