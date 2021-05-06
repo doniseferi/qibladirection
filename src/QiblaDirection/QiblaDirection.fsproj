@@ -11,7 +11,7 @@
     <Version>1.0.0</Version>
     <PackageTags>qibla</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageIconUrl>https://raw.githubusercontent.com/doniseferi/qibladirection/master/images/icon.png</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />
@@ -20,6 +20,5 @@
     <Compile Include="GeoCoordinatesValidator.fs" />
     <Compile Include="QiblaDirectionQueryHandler.fs" />
     <None Include="..\..\images\icon.png" Pack="true" PackagePath="\"/>
-    <None Include="..\..\readme.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>

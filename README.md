@@ -1,5 +1,5 @@
 <p align="center" background-color="white">
-<img src="images/QiblaDirection.svg?sanitize=true" width="300px" />
+<img src="https://raw.githubusercontent.com/doniseferi/qibladirection/a348f377d5adac74bdb78aafd7664a80c072081c/images/QiblaDirection.svg?sanitize=true" width="300px" />
 </p>
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/doniseferi/qibladirection/.NET?style=for-the-badge) ![GitHub top language](https://img.shields.io/github/languages/top/doniseferi/qibladirection?style=for-the-badge) ![License](https://img.shields.io/github/license/doniseferi/qibladirection?style=for-the-badge) ![Coveralls](https://img.shields.io/coveralls/github/doniseferi/qibladirection?style=for-the-badge)
