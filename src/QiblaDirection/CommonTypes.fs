@@ -1,4 +1,4 @@
-﻿namespace CommonTypes
+﻿namespace QiblaDirection.CommonTypes
 
 [<Struct>]
 type Latitude = private Latitude of  float
@@ -28,9 +28,6 @@ type ErrorInformation = {
     message: string
     invalidField: string
 }
-
-[<Struct>]
-type QiblaError = QiblaError of ErrorInformation
 
 [<Struct>]
 type UnvalidatedGeoCoordinates = public {

@@ -1,5 +1,6 @@
 namespace QiblaDirection.UnitTests
-open CommonTypes
+open QiblaDirection
+open QiblaDirection.CommonTypes
 open TestData
 open NUnit.Framework
 
@@ -45,7 +46,7 @@ type QiblaDirectionTests () =
           |] 
           |> Seq.iter (fun x ->
             Assert.AreEqual(
-                QiblaError { invalidField = "latitude"; message = "Please provide a latitude value between -90 to 90" },
+                [{ invalidField = "latitude"; message = "Please provide a latitude value between -90 to 90" }],
                 systemUnderTestErrorAdapter x))
 
     [<Test>]
@@ -56,5 +57,5 @@ type QiblaDirectionTests () =
           |] 
           |> Seq.iter (fun x -> 
             Assert.AreEqual(
-                QiblaError { invalidField = "longitude"; message = "Please provide a longitude value between -180 to 180" },
+                [{ invalidField = "longitude"; message = "Please provide a longitude value between -180 to 180" }],
                 systemUnderTestErrorAdapter x))

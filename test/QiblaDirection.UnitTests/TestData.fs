@@ -1,5 +1,5 @@
 ﻿module TestData
-open CommonTypes
+open QiblaDirection.CommonTypes
 
 let testData = [|
     {| input = { lat = 51.5160; lon = -0.1749}; expected = 118.9432373f |}

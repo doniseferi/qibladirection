@@ -1,6 +1,7 @@
-﻿module GetQiblaDirection
-open CommonTypes
-open DomainApi
+﻿module QiblaDirection.GetQiblaDirection
+
+open QiblaDirection.CommonTypes
+open QiblaDirection.DomainApi
 
 let getQiblaDirection: GetQiblaDirection =
     fun geoCoordinates ->
@@ -28,17 +29,13 @@ let getQiblaDirection: GetQiblaDirection =
             |> Radians.value 
             |> cos
         
-        let top = 
+        let x = 
             Longitude.subtract Mecca.Kaaba.longitude geoCoordinates.longitude 
             |> Radians.value 
             |> sin
 
-        let bottom = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
-    
-        let qibla = atan2 top bottom
+        let y = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
         
-        let degrees = 
-            qibla 
+        atan2 x y
             |> Degrees.convert
-        
-        { trueNorth = degrees }
+            |> QiblaDirection.create

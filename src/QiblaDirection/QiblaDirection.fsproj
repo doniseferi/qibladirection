@@ -12,6 +12,7 @@
     <PackageTags>qibla</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/doniseferi/qibladirection/master/images/icon.png</PackageIconUrl>
+    <PackageVersion>1.0.1.1</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />
@@ -19,6 +20,6 @@
     <Compile Include="GetQiblaDirection.fs" />
     <Compile Include="GeoCoordinatesValidator.fs" />
     <Compile Include="QiblaDirectionQueryHandler.fs" />
-    <None Include="..\..\images\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>

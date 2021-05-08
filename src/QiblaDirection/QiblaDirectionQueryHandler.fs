@@ -1,20 +1,17 @@
-﻿module GetQiblaDirectionHandler
-open DomainApi
-open CommonTypes
+﻿module QiblaDirection.GetQiblaDirectionHandler
+
+open QiblaDirection.CommonTypes
+open QiblaDirection.DomainApi
 
 let qiblaDirectionQueryHandler: QiblaDirectionQueryHandler =
     fun getQiblaDirection geoCoordinatesValidator unvalidatedGeoCoordinates ->
        match geoCoordinatesValidator unvalidatedGeoCoordinates with
-       | Ok geo -> 
-            geo
-            |> getQiblaDirection 
-            |> Ok
-       | Error err -> 
-            QiblaError { invalidField = err.invalidField; message = err.message } 
-            |> Error
+       | Ok geo -> Ok (getQiblaDirection geo)
+       | Error err -> Error err
+
+let getQiblaDirection' = GetQiblaDirection.getQiblaDirection
+let geoCoordinatesValidator' = GeoCoordinatesValidator.geoCoordinatesValidator
 
 let qiblaDirectionQueryHandler' =
-    let getQiblaDirection' = GetQiblaDirection.getQiblaDirection
-    let geoCoordinatesValidator' = GeoCoordinatesValidator.geoCoordinatesValidator
     fun unvalidatedGeoCoordinates ->
         qiblaDirectionQueryHandler getQiblaDirection' geoCoordinatesValidator' unvalidatedGeoCoordinates
