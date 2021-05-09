@@ -8,7 +8,7 @@
     <PackageLicenseExpression>ISC</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/doniseferi/qibladirection</PackageProjectUrl>
     <Description>An F# library that given a latitude and logitude record will return the direction of the Kaaba, also known as the Qibla.</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageTags>qibla</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/doniseferi/qibladirection/master/images/icon.png</PackageIconUrl>
