@@ -8,19 +8,19 @@ let getQiblaDirection: GetQiblaDirection =
         
         let cosineOfLat = 
             Latitude.value geoCoordinates.latitude 
-            |> Radians.convert 
+            |> Radians.fromDegrees
             |> Radians.value 
             |> cos
 
         let tangentOfLat = 
             Latitude.value Mecca.Kaaba.latitude 
-            |> Radians.convert 
+            |> Radians.fromDegrees
             |> Radians.value 
             |> tan
 
         let sineofLat = 
             Latitude.value geoCoordinates.latitude 
-            |> Radians.convert 
+            |> Radians.fromDegrees
             |> Radians.value 
             |> sin
 
@@ -37,5 +37,5 @@ let getQiblaDirection: GetQiblaDirection =
         let y = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
         
         atan2 x y
-            |> Degrees.convert
+            |> Degrees.fromRadians
             |> QiblaDirection.create

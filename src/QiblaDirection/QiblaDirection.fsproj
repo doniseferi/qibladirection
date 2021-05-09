@@ -13,6 +13,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/doniseferi/qibladirection/master/images/icon.png</PackageIconUrl>
     <PackageVersion>1.0.2</PackageVersion>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />

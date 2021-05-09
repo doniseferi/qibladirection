@@ -6,13 +6,41 @@
 
 An F# library that given a latitude and logitude record will return the direction of the Kaaba, also known as the Qibla.
 
+# Install
+```dotnetcli
+dotnet add package QiblaDirection
+```
+or from Visual Studios package manager console
+```powershell
+Install-Package QiblaDirection -ProjectName YOUR_PROJECT_NAME
+```
+
 # Example
 ```fsharp
-// Output: {Case:Ok,Fields:[{{ trueNorth: Degrees 118.9432346 }}]}
-GetQiblaDirectionHandler.qiblaDirectionQueryHandler' { lat = 51.5160; lon = -0.1749}
+open QiblaDirection
+
+(*
+  Case: Ok,
+  trueNorth: Degrees 118.93071604419522
+*) 
+
 ```
 
 ```fsharp
-// Output: {"Case":"Error","Fields":[{"Case":"QiblaError","Fields":[{"message":"Please provide a latitude value between -90 to 90","invalidField":"latitude"}]}]}
-GetQiblaDirectionHandler.qiblaDirectionQueryHandler'{ lat = 189; lon = 0 }
+open QiblaDirection
+
+(* Output:
+  Case: Error
+    [
+      {
+        message: "Please provide a latitude value between -90 to 90"
+        invalidField: "latitude"
+      },
+      {
+        message: "Please provide a longitude value between -180 to 180"
+        invalidField: "longitude"
+      }
+    ]
+*)
+GetQiblaDirectionHandler.qiblaDirectionQueryHandler'{ lat = 180.0012; lon = 0.0 }
 ```

@@ -24,7 +24,7 @@ type QiblaDirection = public {
 }
 
 [<Struct>]
-type ErrorInformation = {
+type ErrorInformation = public {
     message: string
     invalidField: string
 }
@@ -43,26 +43,19 @@ module QiblaDirection =
     let create trueNorth = { trueNorth = trueNorth }
 
 module Degrees = 
-    open ConstainedTypes
     open System
 
     let value (Degrees deg) = deg
     
-    let convert value =
-        Degrees (value * (float 180 / Math.PI))
-
-    let create degrees =
-        match degrees with
-        | GreaterThan 360f -> None
-        | LessThan 0f -> None
-        | _ -> Some (Degrees (float degrees))
+    let fromRadians rad =
+        Degrees (rad * (float 180 / Math.PI))
 
 module Radians =
     open System
     let value (Radians rad) = rad
 
-    let convert value =
-        let degreesValue: float = float value
+    let fromDegrees deg =
+        let degreesValue: float = float deg
         Radians ((Math.PI / float 180) * degreesValue)
 
 module Latitude =
@@ -71,7 +64,7 @@ module Latitude =
 
     let subtract latitudeA latitudeB =
         value latitudeA - value latitudeB 
-        |> Radians.convert
+        |> Radians.fromDegrees
 
     let create latitude =
         match latitude with
@@ -85,7 +78,7 @@ module Longitude =
 
     let subtract longitudeA longitudeB =
         value longitudeA - value longitudeB 
-        |> Radians.convert
+        |> Radians.fromDegrees
 
     let create longitude =
         match longitude with
