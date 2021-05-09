@@ -42,5 +42,5 @@ open QiblaDirection
       }
     ]
 *)
-GetQiblaDirectionHandler.qiblaDirectionQueryHandler'{ lat = 180.0012; lon = 0.0 }
+GetQiblaDirectionHandler.qiblaDirectionQueryHandler'{ lat = 90.0012; lon = 180.0121 }
 ```
