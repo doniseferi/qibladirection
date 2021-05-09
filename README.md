@@ -22,8 +22,8 @@ open QiblaDirection
 (*
   Case: Ok,
   trueNorth: Degrees 118.93071604419522
-*) 
-
+*)
+GetQiblaDirectionHandler.qiblaDirectionQueryHandler' { lat = 51.522079; lon = -0.191380 }
 ```
 
 ```fsharp
