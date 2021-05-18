@@ -35,6 +35,21 @@ type UnvalidatedGeoCoordinates = public {
     lon: float
 }
 
+type Result<'Success, 'Failure> =
+    | Ok of 'Success
+    | Error of 'Failure
+    
+module Result =
+    let map fn r =
+        match r with
+        | Ok s -> Ok (fn s)
+        | Error e -> Error e
+        
+    let bind fn r =
+        match r with
+        | Ok s -> fn s
+        | Error e -> Error e
+
 module ConstainedTypes =
     let (|LessThan|_|) k value = if value < k then Some() else None
     let (|GreaterThan|_|) k value = if value > k then Some() else None
