@@ -12,7 +12,7 @@
     <PackageTags>qibla</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/doniseferi/qibladirection/master/images/icon.png</PackageIconUrl>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.4</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommonTypes.fs" />
