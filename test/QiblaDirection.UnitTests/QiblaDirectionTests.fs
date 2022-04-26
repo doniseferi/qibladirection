@@ -11,12 +11,12 @@ type QiblaDirectionTests () =
         fun f arg ->
             match f arg with
             | Ok s -> s
-            | Error _ -> failwith "Passthrough failed %s"
+            | Error _ -> failwith "Pass through failed %s"
     
     let errorPassthroughAdapter: ('i -> Result<'o, 'e>) -> 'i-> 'e =
        fun f arg ->
             match f arg with
-            | Ok _ -> failwith "Passthrough failed %s"
+            | Ok _ -> failwith "Pass through failed %s"
             | Error e -> e
  
     let systemUnderTest =

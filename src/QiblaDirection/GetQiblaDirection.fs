@@ -18,7 +18,7 @@ let getQiblaDirection: GetQiblaDirection =
             |> Radians.value 
             |> tan
 
-        let sineofLat = 
+        let sineOfLat = 
             Latitude.value geoCoordinates.latitude 
             |> Radians.fromDegrees
             |> Radians.value 
@@ -34,7 +34,7 @@ let getQiblaDirection: GetQiblaDirection =
             |> Radians.value 
             |> sin
 
-        let y = cosineOfLat * tangentOfLat - sineofLat * cosineOfLon
+        let y = cosineOfLat * tangentOfLat - sineOfLat * cosineOfLon
         
         atan2 x y
             |> Degrees.fromRadians

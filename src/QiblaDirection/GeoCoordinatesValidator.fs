@@ -15,4 +15,4 @@ let geoCoordinatesValidator: GeoCoordinatesValidator =
     | None, None -> Error [
             latitudeError
             longitudeError
-        ]
+        ]          
